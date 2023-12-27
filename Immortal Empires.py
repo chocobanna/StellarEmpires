@@ -36,10 +36,8 @@ class Empire():
 #VARIBLES & LISTS & ARRAYS
 listOfEmpires = []
 #EmpireName EmpirePosture EmpireTechnology EmpireProduction EmpireWarringCapability
-empire1 = Empire(["Empire1",50,1,1,0])
-empire2 = Empire(["Empire2",-50,1,1,0])
+empire1 = Empire(["Empire1",0,1,1,0])
 listOfEmpires.append(empire1)
-listOfEmpires.append(empire2)
 
 #SETUP_EMPIRE_RELATIONS
 for currentEmpire in range(len(listOfEmpires)):
@@ -51,12 +49,14 @@ for currentEmpire in range(len(listOfEmpires)):
 training_data = [([0,0],0),
                  ([0,1],1),
                  ([1,0],1),
-                 ([1,1],1),]
+                 ([1,1],1)]
 peceptron = Peceptron(2)
-peceptron.train(training_data,epochs=100)
-empire1.warshipIncrease
-empire2.warshipIncrease
+peceptron.train(training_data,epochs=25)
+for i in range(10):
+  if peceptron.predict([random.uniform(0,1),random.uniform(0,1)]) == 1:
+    empire1.techIncrease()
+  else:
+    empire1.productionIncrease()
+empire1.warshipIncrease()
 print("Empire1Relations:",empire1.relations)
 print("Empire1Traits:",empire1.traits)
-print("Empire2Relations:",empire2.relations)
-print("Empire2Traits:",empire2.traits)
